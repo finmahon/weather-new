@@ -8,8 +8,8 @@ Object.assign=require('object-assign')
 
 // app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
-
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
@@ -109,7 +109,13 @@ initDb(function(err){
   console.log('Error connecting to Mongo. Message:\n'+err);
 });
 
-app.listen(port, ip);
-console.log('Server running on http://%s:%s', ip, port);
+// app.listen(port, ip);
+// console.log('Server running on http://%s:%s', ip, port);
+
+console.log('starting 4......')
+
+app.listen(port, ip, function () {
+  console.log("App started at: " + new Date() + " on port: " + ip + ":" + port);
+});
 
 module.exports = app ;
