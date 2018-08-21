@@ -96,6 +96,12 @@ var initDb = function(callback) {
 //   }
 // });
 
+console.log('routes baby');
+// fhlint-begin: custom-routes
+app.use('/metar', require('./lib/metar.js')());
+app.use('/buoy', require('./lib/buoy.js')());
+app.use('/dlData', require('./lib/dlharbour.js')());
+
 app.get('/health', function (req, res) {
   res.json('ok');
 });
@@ -113,7 +119,7 @@ initDb(function(err){
 // app.listen(port, ip);
 // console.log('Server running on http://%s:%s', ip, port);
 
-console.log('starting 5......')
+console.log('starting 6......')
 
 app.listen(port, ip, function () {
   console.log("App started at: " + new Date() + " on port: " + ip + ":" + port);
