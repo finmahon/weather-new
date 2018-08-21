@@ -1,12 +1,15 @@
 //  OpenShift sample Node application
 var express = require('express'),
     app     = express(),
+    cors = require('cors'),
     morgan  = require('morgan');
     
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
+
+app.use(cors());
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
@@ -90,6 +93,10 @@ app.get('/pagecount', function (req, res) {
   } else {
     res.send('{ pageCount: -1 }');
   }
+});
+
+app.get('/health', function (req, res) {
+  res.json('ok');
 });
 
 // error handling
