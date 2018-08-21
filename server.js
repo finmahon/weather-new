@@ -2,6 +2,7 @@
 var express = require('express'),
     app     = express(),
     cors = require('cors'),
+    path = require('path'),
     morgan  = require('morgan');
     
 Object.assign=require('object-assign')
