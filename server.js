@@ -113,7 +113,7 @@ initDb(function(err){
 // app.listen(port, ip);
 // console.log('Server running on http://%s:%s', ip, port);
 
-console.log('starting 4......')
+console.log('starting 5......')
 
 app.listen(port, ip, function () {
   console.log("App started at: " + new Date() + " on port: " + ip + ":" + port);
