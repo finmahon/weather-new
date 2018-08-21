@@ -37,6 +37,11 @@ function getWeather() {
         $("#eidw").append("<table class='table'>" + header + rows + "</table>");
         $("#eidwspinner").hide();
     })
+    .fail(function(err){
+        console.error('error getting metar', err)
+        $("#eidwspinner").hide();
+        $("#eidw").append("error fetching METAR data");
+    })
 }
 
 function getBuoy() {
@@ -57,6 +62,11 @@ function getBuoy() {
         };
         $("#buoy").append("<table class='table'>" + header + rows + "</table>")
         $("#buoyspinner").hide();
+    })
+    .fail(function(err){
+        console.error('error getting Buoy data', err)
+        $("#buoyspinner").hide();
+        $("#buoy").append("error fetching Buoy weather data");
     })
 }
 
@@ -89,6 +99,11 @@ function getdlData() {
 
         $("#dlspinner").hide();
     })
+    .fail(function(err){
+        console.error('error getting DL current weather', err)
+        $("#dlspinner").hide();
+        $("#dldata").append("error fetching DL current weather");
+    })
 }
 
 function getdlWindData() {
@@ -108,6 +123,11 @@ function getdlWindData() {
         }
         $("#dlwinddata").append("<table class='table'>" + header + rows + "</table>")
         $("#dlwindspinner").hide();
+    })
+    .fail(function(err){
+        console.error('error getting DL weather data', err)
+        $("#dlwindspinner").hide();
+        $("#dlwinddata").append("error fetching DL weather data");
     })
 }
 

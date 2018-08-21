@@ -116,10 +116,6 @@ initDb(function(err){
   console.log('Error connecting to Mongo. Message:\n'+err);
 });
 
-// app.listen(port, ip);
-// console.log('Server running on http://%s:%s', ip, port);
-
-console.log('starting 6......')
 
 app.listen(port, ip, function () {
   console.log("App started at: " + new Date() + " on port: " + ip + ":" + port);
