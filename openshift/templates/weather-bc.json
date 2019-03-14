@@ -1,0 +1,81 @@
+{
+    "kind": "BuildConfig",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "nodejs-mongo-persistent",
+        "creationTimestamp": null,
+        "labels": {
+            "app": "nodejs-mongo-persistent",
+            "template": "nodejs-mongo-persistent"
+        },
+        "annotations": {
+            "description": "Defines how to build the application",
+            "template.alpha.openshift.io/wait-for-ready": "true"
+        }
+    },
+    "spec": {
+        "triggers": [
+            {
+                "type": "ImageChange",
+                "imageChange": {}
+            },
+            {
+                "type": "ConfigChange"
+            },
+            {
+                "type": "GitHub",
+                "github": {
+                    "secret": "d60EXWIbkQONgA1fSD6K6TAfck70aynCXGxrHS8O"
+                }
+            },
+            {
+                "type": "Generic",
+                "generic": {
+                    "secret": "ed6fhjypua5u4OyYCTgjJDsq20WR1kan41XvOYq5"
+                }
+            }
+        ],
+        "runPolicy": "Serial",
+        "source": {
+            "type": "Git",
+            "git": {
+                "uri": "https://github.com/finmahon/weather-new.git",
+                "ref": "master"
+            },
+            "sourceSecret": {
+                "name": "git-fm"
+            }
+        },
+        "strategy": {
+            "type": "Source",
+            "sourceStrategy": {
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "namespace": "openshift",
+                    "name": "nodejs:8"
+                },
+                "env": [
+                    {
+                        "name": "NPM_MIRROR"
+                    }
+                ]
+            }
+        },
+        "output": {
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "nodejs-mongo-persistent:latest"
+            }
+        },
+        "resources": {},
+        "postCommit": {
+            "script": "npm test"
+        },
+        "nodeSelector": null,
+        "successfulBuildsHistoryLimit": 5,
+        "failedBuildsHistoryLimit": 5
+    },
+    "status": {
+        "lastVersion": 0
+    }
+}

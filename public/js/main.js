@@ -13,12 +13,14 @@ var urlDlData = host + 'dlData/current';
 var urlDlWindData = host + 'dlData/wind';
 
 function getWeather() {
-    var body = {
-        "code": "EIDW",
-        "numReadings": "20"
-    };
+    // var body = {
+    //     "code": "EIDW",
+    //     "numReadings": "20"
+    // };
 
-    $.post(urlWeather, body, function (data) {
+    urlWeather = urlWeather+"?code=EIDW&numReadings=20"
+
+    $.get(urlWeather, function (data) {
         // console.log('res', data);
         // $('#eidw').text(JSON.stringify(data.res));
         // $('<table><tr><td>.....</td></tr></table>').appendTo( '#eidw' );
