@@ -1,5 +1,6 @@
 const localHost = 'http://localhost:8001/';
-const remoteHost = 'http://weather-fmahon.9a6d.starter-us-east-1a.openshiftapps.com/';
+const remoteHost = 'http://weather-weather-fm.1d35.starter-us-east-1.openshiftapps.com';
+
 
 const host = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? localHost : remoteHost;
 
