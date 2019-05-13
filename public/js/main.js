@@ -1,5 +1,6 @@
 const localHost = 'http://localhost:8001/';
-const remoteHost = 'http://weather-weather-fm.1d35.starter-us-east-1.openshiftapps.com/';
+const remoteHost = process.env.REMOTE_HOST || 'http://dublin-weather.apps.us-west-1.online-starter.openshift.com/';
+console.log('REMOTE HOST IS ', remoteHost)
 
 const host = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? localHost : remoteHost;
 
