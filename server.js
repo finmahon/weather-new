@@ -98,7 +98,7 @@ var initDb = function(callback) {
 //   }
 // });
 
-console.log('routes baby');
+console.log('routes oi');
 // fhlint-begin: custom-routes
 app.use('/metar', require('./lib/metar.js')());
 app.use('/buoy', require('./lib/buoy.js')());
