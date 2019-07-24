@@ -1,0 +1,180 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: dublin
+  namespace: weather
+  selfLink: /apis/apps.openshift.io/v1/namespaces/weather/deploymentconfigs/dublin
+  uid: 6ec38d47-aa0f-11e9-9d1b-0a580a800083
+  resourceVersion: '1109550'
+  generation: 4
+  creationTimestamp: '2019-07-19T10:24:47Z'
+  labels:
+    app: dublin
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - dublin
+        from:
+          kind: ImageStreamTag
+          namespace: weather
+          name: 'dublin:latest'
+        lastTriggeredImage: >-
+          image-registry.openshift-image-registry.svc:5000/weather/dublin@sha256:1995b78f72a6c53f30302bd5ad370fc7305d38753a3d9955a637cd7b348da5a1
+    - type: ConfigChange
+  replicas: 1
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    app: dublin
+    deploymentconfig: dublin
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dublin
+        deploymentconfig: dublin
+    spec:
+      containers:
+        - name: dublin
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/weather/dublin@sha256:1995b78f72a6c53f30302bd5ad370fc7305d38753a3d9955a637cd7b348da5a1
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+status:
+  observedGeneration: 4
+  details:
+    message: config change
+    causes:
+      - type: ConfigChange
+  availableReplicas: 1
+  unavailableReplicas: 0
+  latestVersion: 1
+  updatedReplicas: 1
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2019-07-19T10:45:10Z'
+      lastTransitionTime: '2019-07-19T10:45:10Z'
+      message: Deployment config has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2019-07-19T10:45:11Z'
+      lastTransitionTime: '2019-07-19T10:45:11Z'
+      reason: NewReplicationControllerAvailable
+      message: replication controller "dublin-1" successfully rolled out
+  replicas: 1
+  readyReplicas: 1
+
+..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
