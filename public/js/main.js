@@ -2,7 +2,7 @@ const localHost = 'http://localhost:8001/';
 const remoteHost = window.weatherRemoteHost || 'http://dublin-weather.apps.us-east-1.online-starter.openshift.com/';
 console.log('REMOTE HOST IS ', remoteHost)
 
-const host = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? localHost : App.cloud;
+const host = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? localHost : remoteHost;
 
 console.log('HOST IS '+host)
 var urlWeather = host + 'metar';
