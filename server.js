@@ -118,7 +118,7 @@ initDb(function(err){
   console.log('Error connecting to Mongo. Message:\n'+err);
 });
 
-
+console.log('REMOTE HOSTNAME server IS ', process.env.HOSTNAME)
 app.listen(port, ip, function () {
   console.log("App started at: " + new Date() + " on port: " + ip + ":" + port);
 });
