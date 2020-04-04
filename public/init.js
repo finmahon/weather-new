@@ -11,7 +11,7 @@ window.App = {};
                 var jsonConfig = JSON.parse(response);
                 window.weatherRemoteHost = jsonConfig.host;
                 //App.cloud = jsonConfig.cloudHostUrl;
-                console.log('cloud.host init', window.weatherRemoteHost);  
+                console.log('QQQ cloud.host init', window.weatherRemoteHost);  
                 //load rest of bundles js app once App.cloud is here
                 var script = document.createElement('script');
                 script.src = 'js/main.js';
